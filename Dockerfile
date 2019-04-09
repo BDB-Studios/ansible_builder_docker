@@ -7,15 +7,14 @@ ARG BUILD_PACKAGES="python-dev build-base py-setuptools libffi-dev openssl-dev r
 ARG RUBY_PACKAGES="ruby ruby-bundler libstdc++ ca-certificates"
 ARG PYTHON_PACKAGES="python python3 py-pip py-setuptools"
 
-ARG ANSIBLE_VERSION="2.7"
-ARG PIP_PACKAGES="ansible==${ANSIBLE_VERSION} ansible-lint boto boto3 botocore pycrypto requests docker molecule molecule[docker]"
-
 ARG NON_PRIV_USER="tools"
 MAINTAINER "github@bdb-studios.co.uk"
 
+COPY docker/requirements.txt /tmp/requirements.txt
+
 RUN apk add --update ${APK_PACKAGES} ${PYTHON_PACKAGES} ${RUBY_PACKAGES} ${BUILD_PACKAGES}; \
     pip install --upgrade pip; \
-    pip install ${PIP_PACKAGES}; \
+    pip install -r /tmp/requirements.txt; \
     adduser -D -u 1000 ${NON_PRIV_USER}; \
     gem update --system; \
     gem install inspec; \
@@ -24,6 +23,7 @@ RUN apk add --update ${APK_PACKAGES} ${PYTHON_PACKAGES} ${RUBY_PACKAGES} ${BUILD
     apk del ${BUILD_PACKAGES}; \
     rm -rf ~/.cache ~/.gems; \
     rm -rf /var/cache/apk/*; \
+    rm /tmp/requirements.txt; \
     apk update
 
 COPY docker/etc/conf.d/ /etc/conf.d/

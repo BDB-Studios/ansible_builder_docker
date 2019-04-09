@@ -1,0 +1,10 @@
+ansible==2.7
+ansible-lint
+boto
+boto3
+botocore
+pycrypto
+requests
+docker
+molecule
+molecule[docker]
