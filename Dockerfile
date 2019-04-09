@@ -27,6 +27,7 @@ RUN apk add --update ${APK_PACKAGES} ${PYTHON_PACKAGES} ${RUBY_PACKAGES} ${BUILD
 
 COPY docker/etc/conf.d/ /etc/conf.d/
 COPY docker/etc/periodic/hourly/ /etc/periodic/hourly/
+COPY docker/tests/ /home/tools/tests/
 
 VOLUME ["/home/tools/data", "/home/tools/.ssh"]
 
