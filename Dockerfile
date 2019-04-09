@@ -8,7 +8,7 @@ ARG RUBY_PACKAGES="ruby ruby-bundler libstdc++ ca-certificates"
 ARG PYTHON_PACKAGES="python python3 py-pip py-setuptools"
 
 ARG ANSIBLE_VERSION="2.7"
-ARG PIP_PACKAGES="ansible==${ANSIBLE_VERSION} ansible-lint boto boto3 botocore pycrypto pywinrm requests docker molecule molecule[docker]"
+ARG PIP_PACKAGES="ansible==${ANSIBLE_VERSION} ansible-lint boto boto3 botocore pycrypto requests docker molecule molecule[docker]"
 
 ARG NON_PRIV_USER="tools"
 MAINTAINER "github@bdb-studios.co.uk"
