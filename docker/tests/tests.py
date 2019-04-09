@@ -15,7 +15,6 @@ with TestCases() as test:
     test.package_exists('ruby')
     test.package_exists('bash')
     test.package_exists('py-pip')
-    test.pip_module_exists('awscli')
     test.ruby_gem_exists('inspec')
     test.has_env_var('PAGER')
     test.package_exists('groff')
