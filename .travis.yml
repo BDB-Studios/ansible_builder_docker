@@ -8,4 +8,6 @@ services:
 
 install:
   - docker build -t bdbstudios/ansible-builder .
+
+script:
   - docker run --rm bdbstudios/ansible-builder bash -c 'python /home/tools/tests/tests.py'
