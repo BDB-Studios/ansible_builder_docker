@@ -15,9 +15,10 @@ COPY docker/requirements.txt /tmp/requirements.txt
 RUN apk add --update ${APK_PACKAGES} ${PYTHON_PACKAGES} ${RUBY_PACKAGES} ${BUILD_PACKAGES}; \
     pip install --upgrade pip; \
     pip install -r /tmp/requirements.txt; \
+    pip install molecule[docker]; \
     adduser -D -u 1000 ${NON_PRIV_USER}; \
     gem update --system; \
-    gem install inspec; \
+    gem install rdoc inspec; \
     cp /usr/share/zoneinfo/Europe/London /etc/localtime; \
     echo "Europe/London" >  /etc/timezone; \
     apk del ${BUILD_PACKAGES}; \
