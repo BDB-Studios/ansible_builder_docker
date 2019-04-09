@@ -15,6 +15,7 @@ MAINTAINER "github@bdb-studios.co.uk"
 
 RUN apk add --update ${APK_PACKAGES} ${PYTHON_PACKAGES} ${RUBY_PACKAGES} ${BUILD_PACKAGES}; \
     pip install --upgrade pip; \
+    pip install ${PIP_PACKAGES}; \
     adduser -D -u 1000 ${NON_PRIV_USER}; \
     gem update --system; \
     gem install inspec; \
